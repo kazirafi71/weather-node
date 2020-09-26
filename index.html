@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center text-light ">
+                <div class="card py-5 bg-danger "  >
+                    <div id="wt">
+                        <i style="font-size: 60px; text-align: center; color: yellow;" class="fa fa-sun-o" aria-hidden="true"></i>
+                    </div>
+                    
+                    
+                    <div class="card-body">
+                        <h1>{%weather%}</h1>
+                        <h3 class="card-title"><i style="font-size: 40px; text-align: center; color: white;"  class="fa fa-street-view" aria-hidden="true"></i> {%loc%} , {%cnt%}</h3>
+                        <p id="date" class="card-text">WED | OCT 21 | 10:49AM</p>
+                        <h2>{%tempval%} &deg;C</h2>
+                        <p>Min {%mintempval%} &deg;C | Max {%maxtempval%} &deg;C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const currentDay=()=>{ 
+
+
+            let weather=document.getElementById('wt')
+            const temp="{%xyz%}"
+            console.log(temp)
+            
+            if(temp=="Rain"){
+                weather.innerHTML='<i style="font-size: 60px; text-align: center; color: #18C1CF ;" class="fa fa-tint" aria-hidden="true"></i>'
+            }
+            else if(temp=="Sunny")
+            {
+                weather.innerHTML=
+                '<i style="font-size: 60px; text-align: center; color: yellow;" class="fa fa-sun-o" aria-hidden="true"></i>'
+            }
+            else if(temp=="Drizzle")
+            {
+                weather.innerHTML=
+                '<i style="font-size: 60px; text-align: center; color: #0A5B7E ;" class="fa fa-cloud" aria-hidden="true"></i>'
+            }
+            
+            
+            let day=new Date();
+            var weekday = new Array(7);
+            weekday[0] = "Sun";
+            weekday[1] = "Mon";
+            weekday[2] = "Tue";
+            weekday[3] = "Wed";
+            weekday[4] = "Thu";
+            weekday[5] = "Fri";
+            weekday[6] = "Sat";
+            var dayName=(weekday[day.getDay()]);
+
+            var month = new Array();
+            month[0] = "Jan";
+            month[1] = "Feb";
+            month[2] = "Mar";
+            month[3] = "Apr";
+            month[4] = "May";
+            month[5] = "Jun";
+            month[6] = "Jul";
+            month[7] = "Aug";
+            month[8] = "Sept";
+            month[9] = "Oct";
+            month[10] = "Nov";
+            month[11] = "Dec";
+            var n = month[day.getMonth()];
+            console.log(n)
+
+            var currDate=day.getUTCDate();
+            
+
+            var hour=day.getHours()
+            
+            
+            let period="AM"
+            if(hour>11)
+            {
+                period="PM" 
+                if(hour>12)hour-=12
+                
+            }
+
+            var minute=day.getMinutes();
+            console.log(minute)
+            
+            if(minute<10)
+            {
+                minute="0"+minute;
+            }
+
+            return (dayName+" | "+n+" | "+hour +":"+minute+ period)
+
+            console.log(hour +":"+minute+":"+ period)
+        }
+
+        const newDate=document.getElementById('date')
+        newDate.innerHTML=currentDay();
+        
+        
+    </script>
+
+
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
